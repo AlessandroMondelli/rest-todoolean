@@ -26,6 +26,12 @@
         </main>
 
         <script id="to-do-template" type="text/x-handlebars-template">
-            <li class="to-do-el" data-to-do="{{ dataToDo }}">{{{ toDoEl }}} <i class="fas fa-times"></i></li>
+            <li class="to-do-el" data-to-do="{{ dataToDo }}">
+                <span class="to-do-text">{{{ toDoEl }}}</span>
+                <input class="mod-to-do" type="text" value="{{ toDoEl }}">
+                <i class="fas fa-pencil-alt"></i>
+                <i class="fas fa-save"></i>
+                <i class="fas fa-times"></i>
+            </li>
         </script>
     </body>

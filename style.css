@@ -42,12 +42,36 @@ body.not-active {
     margin-left: 5px;
     color: rgba(0, 0, 0, 0.4);
     font-size: 15px;
-    display: none;
+    opacity: 0;
 }
 
 .to-do-el:hover i {
-    display: inline-block;
+    opacity: 1;
     cursor: pointer;
+}
+
+.to-do-el i:hover {
+    color: black;
+}
+
+.mod-to-do {
+    display: none;
+}
+
+.mod-to-do.active {
+    display: inline-block;
+}
+
+.to-do-text.hidden {
+    display: none;
+}
+
+.fa-save {
+    display: none;
+}
+
+.fa-save.on {
+    display: inline-block;
 }
 
 .add-or-abort {
@@ -67,6 +91,7 @@ body.not-active {
     bottom: 0px;
     right: 100px;
     display: none;
+    font-size: 15px;
 }
 
 #plus-to-do:hover, #abort:hover {
