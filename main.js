@@ -7,7 +7,8 @@ $(document).ready(function() {
 
     printToDoData(); //Richiamo funzione per stampare dati già presenti nell'APi
 
-    $(document).on('click','#add-to-do',function() { //Al click su pulsante "+"
+    $("#plus-to-do").click(function() {
+        $("#abort").addClass("active"); //Mostro pulsante per annullare
         $("#textbox-to-do").addClass("active"); //Mostro input
         $("body").addClass("not-active"); //Aggiungo colore scuro al body
         var newToDo = $("#textbox-to-do").val().trim(); //Prendo valore scritto dall'utente
@@ -16,10 +17,16 @@ $(document).ready(function() {
             $("#textbox-to-do").val(""); //Svuoto input
             $("#textbox-to-do").removeClass("active"); //Nascondo input
             $("body").removeClass("not-active"); //Nascondo colore scuro body
+            $("#abort").removeClass("active"); //Mostro pulsante per annullare
         }
-
     });
 
+    $("#abort").click(function() { //Se viene cliccato tasto per annullare
+        $("#textbox-to-do").val(""); //Svuoto input
+        $("#textbox-to-do").removeClass("active"); //Nascondo input
+        $("body").removeClass("not-active"); //Nascondo colore scuro body
+        $("#abort").removeClass("active"); //Mostro pulsante per annullare
+    })
 
 
     //*** FUNZIONI ***/

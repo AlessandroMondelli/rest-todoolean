@@ -21,7 +21,7 @@
     margin: 0 auto;
     margin-top: 20px;
     font-size: 20px;
-    height: calc(100vh - 80px);
+    height: calc(100vh - 120px);
     position: relative;
 }
 
@@ -38,21 +38,31 @@ body.not-active {
     border-bottom: 1px solid black;
 }
 
-#add-to-do {
-    position: absolute;
-    bottom: 50px;
-    right: 0px;
-    font-size: 35px;
-}
-
-#add-to-do:hover {
-    cursor: pointer;
-}
-
-#plus-to-do {
+.add-or-abort {
     border-radius: 50%;
     background-color: rgb(204,204,204);
     padding: 30px 35px;
+    position: absolute;
+    font-size: 35px;
+}
+
+#plus-to-do {
+    bottom: 0px;
+    right: 0px;
+}
+
+#abort {
+    bottom: 0px;
+    right: 100px;
+    display: none;
+}
+
+#plus-to-do:hover, #abort:hover {
+    cursor: pointer;
+}
+
+#abort.active {
+    display: block;
 }
 
 #textbox-to-do {
