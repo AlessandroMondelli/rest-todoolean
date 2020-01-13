@@ -1,0 +1,71 @@
+* {
+    margin : 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Lato', sans-serif;
+}
+
+#to-do-head {
+    width: 96%;
+    margin: 0 auto;
+    height: 80px;
+}
+
+#to-do-head h1 {
+    line-height: 80px;
+    border-bottom: 2px solid black;
+}
+
+#to-do-main {
+    width: 96%;
+    margin: 0 auto;
+    margin-top: 20px;
+    font-size: 20px;
+    height: calc(100vh - 80px);
+    position: relative;
+}
+
+body.not-active {
+    transition: 0.2s;
+    background-color: rgba(0,0,0,0.9);
+}
+
+#to-do-main ul {
+    list-style-type: none;
+}
+
+.to-do-el {
+    border-bottom: 1px solid black;
+}
+
+#add-to-do {
+    position: absolute;
+    bottom: 50px;
+    right: 0px;
+    font-size: 35px;
+}
+
+#add-to-do:hover {
+    cursor: pointer;
+}
+
+#plus-to-do {
+    border-radius: 50%;
+    background-color: rgb(204,204,204);
+    padding: 30px 35px;
+}
+
+#textbox-to-do {
+    position: absolute;
+    left: 50%;
+    top: 10%;
+    transform: translateX(-50%);
+    padding: 100px;
+    border: 1px solid black;
+    font-size: 30px;
+    display: none;
+}
+
+#textbox-to-do.active{
+    display: block;
+}

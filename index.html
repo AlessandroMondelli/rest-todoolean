@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>To Do List</title>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.1.2/handlebars.min.js"></script>
+        <script src="https://kit.fontawesome.com/8fa0586f23.js" crossorigin="anonymous"></script>
+        <script src="https://momentjs.com/downloads/moment.js" charset="utf-8"></script>
+        <script src="main.js" charset="utf-8"></script>
+        <link href="https://fonts.googleapis.com/css?family=Lato&display=swap" rel="stylesheet">
+        <link rel="stylesheet" href="style.css">
+    </head>
+
+    <body>
+        <header id="to-do-head">
+            <h1>To Do List</h1>
+        </header>
+        <main id="to-do-main">
+            <ul id="to-do-list"></ul>
+            <div id="add-to-do">
+                <div id="plus-to-do">+</div>
+            </div>
+            <input id="textbox-to-do" placeholder="Inserisci testo.."></input>
+
+        </main>
+
+        <script id="to-do-template" type="text/x-handlebars-template">
+            <li class="to-do-el" data-to-do="{{ dataToDo }}">{{{ toDoEl }}}</li>
+        </script>
+    </body>
