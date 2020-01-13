@@ -26,6 +26,12 @@ $(document).ready(function() {
         $("#textbox-to-do").removeClass("active"); //Nascondo input
         $("body").removeClass("not-active"); //Nascondo colore scuro body
         $("#abort").removeClass("active"); //Mostro pulsante per annullare
+    });
+
+    $(document).on('click', '.to-do-el i', function() {
+        var id = $(this).parent().attr('data-to-do');
+        console.log(id);
+        removeData(id);
     })
 
 
@@ -61,6 +67,20 @@ $(document).ready(function() {
             'success' : function(data) { //Caso funzionamento richiesta
                 $("#to-do-list").empty(); //Svuoto lista precedente
                 printToDoData(); //Richiamo funzione per stampare per aggiornare lista
+            },
+            'error' : function() { //Caso di errore di caricamento
+                alert("Errore");
+            }
+        });
+    }
+
+    function removeData(idToDo) {
+        $.ajax ({ //Chiamata AJAX per recuperare dati film
+            'url' : 'http://157.230.17.132:3014/todos/' + idToDo,
+            'method' : 'REMOVE', //Metodo REMOVE
+            'success' : function(data) { //Caso funzionamento richiesta
+                // $("#to-do-list").empty(); //Svuoto lista precedente
+                // printToDoData(); //Richiamo funzione per stampare per aggiornare lista
             },
             'error' : function() { //Caso di errore di caricamento
                 alert("Errore");
