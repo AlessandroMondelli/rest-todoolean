@@ -14,26 +14,18 @@ $(document).ready(function() {
         var newToDo = $("#textbox-to-do").val().trim(); //Prendo valore scritto dall'utente
         if (newToDo.length > 0) { //Controllo che non sia vuoto..
             addToData(newToDo); //Richiamo funzione per aggiungere todo
-            $("#textbox-to-do").val(""); //Svuoto input
-            $("#textbox-to-do").removeClass("active"); //Nascondo input
-            $("body").removeClass("not-active"); //Nascondo colore scuro body
-            $("#abort").removeClass("active"); //Mostro pulsante per annullare
+            hideInput(); //Richiamo funzione per nascondere input
         }
     });
 
     $("#abort").click(function() { //Se viene cliccato tasto per annullare
-        $("#textbox-to-do").val(""); //Svuoto input
-        $("#textbox-to-do").removeClass("active"); //Nascondo input
-        $("body").removeClass("not-active"); //Nascondo colore scuro body
-        $("#abort").removeClass("active"); //Mostro pulsante per annullare
+        hideInput(); //Richiamo funzione per nascondere input
     });
 
-    $(document).on('click', '.to-do-el i', function() {
-        var id = $(this).parent().attr('data-to-do');
-        console.log(id);
-        removeData(id);
-    })
-
+    $(document).on('click', '.to-do-el i', function() { //Se cliccato X su lista..
+        var id = $(this).parent().attr('data-to-do'); //Prendo id elemento
+        removeData(id); //Richiamo funzione per rimuovere elemento
+    });
 
     //*** FUNZIONI ***/
 
@@ -42,6 +34,7 @@ $(document).ready(function() {
             'url' : 'http://157.230.17.132:3014/todos',
             'method' : 'GET', //Metodo GET
             'success' : function(data) { //Caso funzionamento richiesta
+                $("#to-do-list").empty(); //Svuoto lista precedente
                 for (var i = 0; i < data.length; i++) {
                     var placeholder = {
                         dataToDo : data[i].id, //Stampo id elemento
@@ -57,7 +50,7 @@ $(document).ready(function() {
         });
     }
 
-    function addToData(addToDo) {
+    function addToData(addToDo) { //Funzione che aggiunge elemento
         $.ajax ({ //Chiamata AJAX per recuperare dati film
             'url' : 'http://157.230.17.132:3014/todos',
             'method' : 'POST', //Metodo POST
@@ -65,7 +58,6 @@ $(document).ready(function() {
                 'text' : addToDo
             },
             'success' : function(data) { //Caso funzionamento richiesta
-                $("#to-do-list").empty(); //Svuoto lista precedente
                 printToDoData(); //Richiamo funzione per stampare per aggiornare lista
             },
             'error' : function() { //Caso di errore di caricamento
@@ -74,13 +66,12 @@ $(document).ready(function() {
         });
     }
 
-    function removeData(idToDo) {
+    function removeData(idToDo) { //Funzione che rimuove elemento
         $.ajax ({ //Chiamata AJAX per recuperare dati film
             'url' : 'http://157.230.17.132:3014/todos/' + idToDo,
-            'method' : 'REMOVE', //Metodo REMOVE
+            'method' : 'DELETE', //Metodo DELETE
             'success' : function(data) { //Caso funzionamento richiesta
-                // $("#to-do-list").empty(); //Svuoto lista precedente
-                // printToDoData(); //Richiamo funzione per stampare per aggiornare lista
+                printToDoData(); //Richiamo funzione per stampare per aggiornare lista
             },
             'error' : function() { //Caso di errore di caricamento
                 alert("Errore");
@@ -88,4 +79,10 @@ $(document).ready(function() {
         });
     }
 
+    function hideInput() { //Funzione che nasconde input
+        $("#textbox-to-do").val(""); //Svuoto input
+        $("#textbox-to-do").removeClass("active"); //Nascondo input
+        $("body").removeClass("not-active"); //Nascondo colore scuro body
+        $("#abort").removeClass("active"); //Mostro pulsante per annullare
+    }
 });

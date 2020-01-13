@@ -38,6 +38,18 @@ body.not-active {
     border-bottom: 1px solid black;
 }
 
+.to-do-el i {
+    margin-left: 5px;
+    color: rgba(0, 0, 0, 0.4);
+    font-size: 15px;
+    display: none;
+}
+
+.to-do-el:hover i {
+    display: inline-block;
+    cursor: pointer;
+}
+
 .add-or-abort {
     border-radius: 50%;
     background-color: rgb(204,204,204);
